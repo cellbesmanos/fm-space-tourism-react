@@ -1,0 +1,36 @@
+.NamedTab {
+  position: relative;
+  padding-bottom: 1.2rem;
+
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.NamedTab::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: block;
+  height: 0.4rem;
+  width: 100%;
+
+  background-color: hsla(var(--clr-white) / 0);
+
+  content: "";
+}
+
+.NamedTab:hover::after,
+.NamedTab:focus::after {
+  background-color: hsla(var(--clr-white) / 0.5);
+}
+
+.NamedTab.active {
+  color: hsl(var(--clr-white));
+}
+
+.NamedTab.active::after {
+  background-color: hsla(var(--clr-white) / 1);
+}
