@@ -6,6 +6,17 @@
   --ff-serif: "Bellefair", serif;
   --ff-sans: "Barlow", sans-serif;
   --ff-sans-condensed: "Barlow Condensed", sans-serif;
+
+  /* clamp(8rem, 8vw + 1.6rem, 15rem); */
+
+  --fs-900: 8rem;
+  --fs-800: 5.6rem;
+  --fs-700: 2.4rem;
+  --fs-600: 1.6rem;
+  --fs-500: 2.8rem;
+  --fs-400: 1.5rem;
+  --fs-300: 1.4rem;
+  --fs-200: 1.4rem;
 }
 
 *,
