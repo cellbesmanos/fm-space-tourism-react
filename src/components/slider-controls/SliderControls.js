@@ -1,15 +1,25 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import SliderContext from "../slider/slider-context";
 
 import "./SliderControls.css";
 
 export default function SliderControls(props) {
-  const [focusedTabIndex, setFocusedTabIndex] = useState(0);
+  const [focusedTabIndex, setFocusedTabIndex] = useState(null);
+  const { activeTabIndex } = useContext(SliderContext);
   const tabsRef = useRef([]);
   const tabsLength = React.Children.toArray(props.children).length;
 
   useEffect(() => {
-    tabsRef.current[focusedTabIndex].focus();
-  }, [focusedTabIndex]);
+    // DO NOT REMOVE IF STATEMENT
+    // PREVENTS CHECKING TAB REF IMMEDIATELY ON MOUNT
+
+    if (focusedTabIndex !== null) {
+      tabsRef.current[focusedTabIndex].focus();
+    } else {
+      // only allow the active element to be tabbable at first
+      tabsRef.current[activeTabIndex].setAttribute("tabIndex", "0");
+    }
+  }, [focusedTabIndex, activeTabIndex]);
 
   function setCurrentFocusedTab(event) {
     const keyCode = event.keyCode;
