@@ -27,10 +27,10 @@
   background-color: hsla(var(--clr-white) / 0.5);
 }
 
-.NamedTab.active {
+.NamedTab[aria-selected="true"] {
   color: hsl(var(--clr-white));
 }
 
-.NamedTab.active::after {
+.NamedTab[aria-selected="true"]::after {
   background-color: hsla(var(--clr-white) / 1);
 }
