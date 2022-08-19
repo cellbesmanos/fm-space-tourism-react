@@ -1,5 +1,5 @@
 import React from "react";
-import { NamedTab, Slider, SliderControls } from "./components";
+import { NamedTab, NumberedTab, Slider, SliderControls } from "./components";
 
 export default function App() {
   return (
@@ -12,6 +12,14 @@ export default function App() {
             <NamedTab name="Moon" />
             <NamedTab name="Mars" />
             <NamedTab name="Europa" />
+          </SliderControls>
+        </Slider>
+
+        <Slider>
+          <SliderControls label={"technology list"}>
+            <NumberedTab name="for aria label" />
+            <NumberedTab name="for aria label" />
+            <NumberedTab name="for aria label" />
           </SliderControls>
         </Slider>
       </main>
