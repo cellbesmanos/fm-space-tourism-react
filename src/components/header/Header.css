@@ -1,0 +1,85 @@
+.Header {
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 4rem;
+  margin-inline: auto;
+  max-width: 140rem;
+}
+
+.Header::after {
+  position: relative;
+
+  display: block;
+  transform: translateX(4.2rem);
+  width: 100%;
+  height: 1px;
+
+  background-color: hsla(var(--clr-white) / 0.25);
+
+  content: "";
+  order: 1;
+  z-index: 2;
+}
+
+.Header nav {
+  order: 2;
+  z-index: 1;
+}
+
+.Header__logo {
+  margin-inline: clamp(2.4rem, 5vw, 5.5rem);
+}
+
+.Header__navigation {
+  --gap: 4.8rem;
+
+  padding-inline: clamp(4.6rem, 6vw, 12.8rem);
+  list-style-type: none;
+  background-color: red;
+}
+
+@supports (backdrop-filter: blur(4rem)) {
+  .Header__navigation {
+    background-color: hsla(var(--clr-white) / 0.04);
+    backdrop-filter: blur(4rem);
+  }
+}
+
+.Header__navigation a {
+  position: relative;
+
+  display: block;
+  padding-block: 3.2rem;
+
+  text-decoration: none;
+}
+
+.Header__navigation a::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  height: 0.3rem;
+
+  background-color: hsla(var(--clr-white) / 0.25);
+
+  opacity: 0;
+  content: "";
+}
+
+.Header__navigation a:hover::after,
+.Header__navigation a:focus::after {
+  opacity: 1;
+}
+
+.Header__navigation a.active::after {
+  opacity: 1;
+  background-color: hsl(var(--clr-white));
+}
+
+.Header__navigation a > span {
+  font-weight: 700;
+  margin-right: 0.8rem;
+}

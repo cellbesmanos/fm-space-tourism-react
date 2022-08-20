@@ -1,10 +1,12 @@
 import React from "react";
-import { Slider, SliderControls, SliderTab } from "./components";
+import { Header, Slider, SliderControls, SliderTab } from "./components";
 
 export default function App() {
   return (
     <div>
       <main>
+        <Header />
+
         <h1>Hello World!</h1>
 
         <Slider>
