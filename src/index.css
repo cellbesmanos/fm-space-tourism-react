@@ -105,6 +105,33 @@ p {
   gap: var(--gap, 1.6rem);
 }
 
+.grid-container {
+  display: grid;
+  place-items: center;
+  padding-inline: 1.6rem;
+  padding-bottom: 6.4rem;
+
+  text-align: center;
+}
+
+.grid-container > * {
+  max-width: 45ch;
+}
+
+@media (min-width: 53.75em) {
+  .grid-container {
+    display: grid;
+    column-gap: var(--container-gap, 3.2rem);
+    grid-template-columns: minmax(1.6rem, 1fr) repeat(2, minmax(0, 64rem)) minmax(
+        1.6rem,
+        1fr
+      );
+    padding-inline: unset;
+
+    text-align: left;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -199,4 +226,38 @@ p {
 .fs-700,
 .fs-600 {
   line-height: 1.1;
+}
+
+.numbered-title {
+  color: hsl(var(--clr-white));
+  font-family: var(--fm-sans-condensed);
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
+  letter-spacing: 4.72px;
+  text-transform: uppercase;
+}
+
+.numbered-title > span {
+  color: hsla(var(--clr-white) / 0.25);
+  font-weight: 700;
+  margin-inline-end: 1.6rem;
+}
+
+/* page specific backgrounds */
+
+.body--home {
+  background-image: url("/public/assets/home/background-home-mobile.jpg");
+  background-position: bottom center;
+}
+
+@media (min-width: 35em) {
+  .body--home {
+    background-image: url("/public/assets/home/background-home-tablet.jpg");
+  }
+}
+
+@media (min-width: 53.75em) {
+  .body--home {
+    background-image: url("/public/assets/home/background-home-desktop.jpg");
+    background-position: center;
+  }
 }
