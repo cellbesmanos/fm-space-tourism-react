@@ -1,41 +1,59 @@
 .Header {
   align-items: center;
   justify-content: space-between;
-  margin-block: 4rem;
-  margin-inline: auto;
-  max-width: 140rem;
 }
 
-.Header::after {
-  position: relative;
+@media (min-width: 53.75em) {
+  .Header {
+    margin-block: 4rem;
+    margin-inline: auto;
+    max-width: 140rem;
+  }
 
-  display: block;
-  transform: translateX(4.2rem);
-  width: 100%;
-  height: 1px;
+  .Header::after {
+    position: relative;
 
-  background-color: hsla(var(--clr-white) / 0.25);
+    display: block;
+    transform: translateX(4.2rem);
+    width: 100%;
+    height: 1px;
 
-  content: "";
-  order: 1;
-  z-index: 2;
-}
+    background-color: hsla(var(--clr-white) / 0.25);
 
-.Header nav {
-  order: 2;
-  z-index: 1;
+    content: "";
+    order: 1;
+    z-index: 2;
+  }
+
+  .Header nav {
+    order: 2;
+    z-index: 1;
+  }
 }
 
 .Header__logo {
   margin-inline: clamp(2.4rem, 5vw, 5.5rem);
 }
 
-.Header__navigation {
-  --gap: 4.8rem;
+.Header__burger-btn {
+  display: none;
 
-  padding-inline: clamp(4.6rem, 6vw, 12.8rem);
+  background-color: unset;
+  border: unset;
+  cursor: pointer;
+}
+
+.Header__navigation {
+  --gap: clamp(2.4rem, 5vw, 4.8rem);
+
   list-style-type: none;
-  background-color: red;
+  background-color: hsla(var(--clr-black) / 0.98);
+}
+
+@media (min-width: 35em) {
+  .Header__navigation {
+    padding-inline: clamp(4.6rem, 6vw, 12.8rem);
+  }
 }
 
 @supports (backdrop-filter: blur(4rem)) {
@@ -82,4 +100,63 @@
 .Header__navigation a > span {
   font-weight: 700;
   margin-right: 0.8rem;
+}
+
+@media (min-width: 35em) and (max-width: 53.75em) {
+  .Header__navigation a > span {
+    display: none;
+  }
+}
+
+@media (max-width: 35em) {
+  .Header__logo {
+    margin-block: 2.4rem;
+  }
+
+  .Header__navigation {
+    --gap: 2rem;
+    --underline-gap: 1.2rem;
+
+    position: fixed;
+    flex-direction: column;
+    padding-block: min(32rem, 15vh);
+    padding-inline: 3.2rem 2.6rem;
+
+    transform: translateX(100%);
+
+    inset: 0 0 0 20%;
+    z-index: 1000;
+  }
+
+  .Header__navigation--active {
+    animation: slide 500ms ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .Header__navigation a::after {
+    max-width: 80%;
+  }
+
+  .Header__burger-btn {
+    position: absolute;
+    display: block;
+    top: 3.2rem;
+    right: 2.6rem;
+    width: 2.4rem;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 2000;
+    aspect-ratio: 1 / 1;
+  }
 }
