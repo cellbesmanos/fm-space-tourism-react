@@ -38,7 +38,7 @@ export default function Destination() {
     }
   }, [searchParams]);
 
-  function setActiveDestination(index) {
+  function setActiveTab(index) {
     setActiveTabIndex(index);
     setSearchParams({ tab: destinations[index].name, id: index });
   }
@@ -60,9 +60,7 @@ export default function Destination() {
         />
       </picture>
 
-      <DestinationContext.Provider
-        value={{ activeTabIndex, setActiveDestination }}
-      >
+      <DestinationContext.Provider value={{ activeTabIndex, setActiveTab }}>
         <SliderControls context={DestinationContext}>
           {destinations.map(({ name }) => (
             <SliderTab name={name} key={name} named />

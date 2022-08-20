@@ -258,6 +258,11 @@ p {
   background-position: center;
 }
 
+.body--crew {
+  background-image: url("/public/assets/crew/background-crew-mobile.jpg");
+  background-position: bottom center;
+}
+
 @media (min-width: 35em) {
   .body--home {
     background-image: url("/public/assets/home/background-home-tablet.jpg");
@@ -265,6 +270,10 @@ p {
 
   .body--destination {
     background-image: url("/public/assets/destination/background-destination-tablet.jpg");
+  }
+
+  .body--crew {
+    background-image: url("/public/assets/crew/background-crew-tablet.jpg");
   }
 }
 
@@ -276,5 +285,10 @@ p {
 
   .body--destination {
     background-image: url("/public/assets/destination/background-destination-desktop.jpg");
+  }
+
+  .body--crew {
+    background-image: url("/public/assets/crew/background-crew-desktop.jpg");
+    background-position: right center;
   }
 }

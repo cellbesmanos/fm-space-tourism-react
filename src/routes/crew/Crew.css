@@ -1,0 +1,88 @@
+.Crew {
+  --flow-space: 2rem;
+
+  grid-template-areas:
+    "title"
+    "image"
+    "dots"
+    "content";
+}
+
+.Crew > .numbered-title {
+  grid-area: title;
+}
+
+.Crew > .Crew__image {
+  grid-area: image;
+  border-bottom: 1px solid hsla(var(--clr-white) / 0.25);
+}
+
+.Crew__info h2 {
+  color: hsl(var(--clr-white) / 0.5);
+}
+
+@media (max-width: 35em) {
+  .Crew > .Crew__image img {
+    margin-inline: auto;
+    max-width: 80%;
+  }
+}
+
+.Crew > .SliderControls {
+  grid-area: dots;
+}
+
+.Crew > .Crew__info {
+  --flow-space: 1.6rem;
+  grid-area: content;
+}
+
+@media (min-width: 35em) {
+  .Crew {
+    grid-template-areas:
+      "title"
+      "content"
+      "dots"
+      "image";
+
+    padding-top: clamp(4rem, 4vh, 6rem);
+    padding-bottom: unset;
+  }
+
+  .Crew > .numbered-title {
+    margin-bottom: min(3vh, 6.4rem);
+    justify-self: start;
+  }
+
+  .Crew > .Crew__image {
+    align-self: end;
+  }
+}
+
+@media (min-width: 53.75em) {
+  .Crew {
+    grid-template-areas:
+      ". title title ."
+      ". content image ."
+      ". dots image .";
+
+    align-content: start;
+  }
+
+  .Crew > * {
+    justify-self: start;
+  }
+
+  .Crew > article {
+    max-width: unset;
+  }
+
+  .Crew > article > p {
+    max-width: 45ch;
+  }
+
+  .Crew > .Crew__image {
+    justify-self: center;
+    width: max(30rem, 100%);
+  }
+}

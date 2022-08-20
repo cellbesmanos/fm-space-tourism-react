@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import "./SliderTab.css";
 
 const SliderTab = React.forwardRef((props, ref) => {
-  const { activeTabIndex, setActiveDestination } = useContext(props.context);
+  const { activeTabIndex, setActiveTab } = useContext(props.context);
   let content;
   let classes;
 
@@ -21,7 +21,7 @@ const SliderTab = React.forwardRef((props, ref) => {
   return (
     <button
       className={`SliderTab ${classes}`}
-      onClick={() => setActiveDestination(props.index)}
+      onClick={() => setActiveTab(props.index)}
       onKeyUp={props.setCurrentFocusedTab}
       aria-selected={props.index === activeTabIndex}
       aria-controls={`${props.name}-tab`}
