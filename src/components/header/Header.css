@@ -6,8 +6,6 @@
 @media (min-width: 53.75em) {
   .Header {
     margin-block: 4rem;
-    margin-inline: auto;
-    max-width: 140rem;
   }
 
   .Header::after {
