@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import SliderContext from "../slider/slider-context";
 
 import "./SliderControls.css";
 
 export default function SliderControls(props) {
   const [focusedTabIndex, setFocusedTabIndex] = useState(null);
-  const { activeTabIndex } = useContext(SliderContext);
+  const { activeTabIndex } = useContext(props.context);
   const tabsRef = useRef([]);
   const tabsLength = React.Children.toArray(props.children).length;
 
@@ -58,6 +57,7 @@ export default function SliderControls(props) {
           focusedTabIndex,
           setCurrentFocusedTab,
           index,
+          context: props.context,
         });
       })}
     </div>
