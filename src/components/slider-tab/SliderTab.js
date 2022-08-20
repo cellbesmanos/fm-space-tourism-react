@@ -13,7 +13,7 @@ const SliderTab = React.forwardRef((props, ref) => {
       "uppercase ff-sans-condensed text-primary fs-300 letter-spacing-2";
   } else if (props.numbered) {
     content = props.index + 1;
-    classes = "uppercase ff-serif fs-300";
+    classes = "uppercase ff-serif fs-600";
   } else {
     content = null;
   }
