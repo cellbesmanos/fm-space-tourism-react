@@ -1,0 +1,31 @@
+main.Error {
+  text-align: center;
+}
+
+.Error {
+  grid-template-areas: ". content .";
+}
+
+@media (min-width: 53.75em) {
+  .Error {
+    grid-template-areas: ". content content .";
+  }
+}
+
+.Error__content {
+  --flow-gap: 4rem;
+
+  grid-area: content;
+}
+
+.Error__cta {
+  display: block;
+
+  color: hsla(var(--clr-white) / 0.5);
+  text-decoration: none;
+}
+
+.Error__cta:hover,
+.Error__cta:focus {
+  color: hsla(var(--clr-white) / 1);
+}
