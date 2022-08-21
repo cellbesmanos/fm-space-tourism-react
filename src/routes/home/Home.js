@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { pageTransiton } from "../transitions";
 
 import "./Home.css";
 
@@ -14,7 +16,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="Home grid-container">
+    <motion.main
+      initial={pageTransiton.initial}
+      animate={pageTransiton.animate}
+      transition={pageTransiton.transition}
+      className="Home grid-container"
+    >
       <div>
         <h1 className="uppercase letter-spacing-1 ff-sans-condensed">
           So, you want to travel to
@@ -36,6 +43,6 @@ export default function Home() {
           Explore
         </Link>
       </div>
-    </main>
+    </motion.main>
   );
 }

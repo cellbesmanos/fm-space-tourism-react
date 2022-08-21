@@ -1,11 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { pageTransiton } from "../transitions";
 
 import "./Error.css";
 
 export default function Error() {
   return (
-    <main className="Error grid-container">
+    <motion.main
+      initial={pageTransiton.initial}
+      animate={pageTransiton.animate}
+      transition={pageTransiton.transition}
+      className="Error grid-container"
+    >
       <div className="Error__content flow">
         <h1 className="ff-serif uppercase">
           <span
@@ -21,6 +28,6 @@ export default function Error() {
           Back to home
         </Link>
       </div>
-    </main>
+    </motion.main>
   );
 }

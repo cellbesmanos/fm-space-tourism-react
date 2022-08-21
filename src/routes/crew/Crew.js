@@ -2,6 +2,12 @@ import React, { createContext, useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SliderControls, SliderTab } from "../../components";
 import data from "../../data.json";
+import { motion } from "framer-motion";
+import {
+  pageTransiton,
+  imageTransition,
+  descriptionTransition,
+} from "../transitions";
 
 import "./Crew.css";
 
@@ -44,17 +50,32 @@ export default function Crew() {
   }
 
   return (
-    <main className="Crew grid-container flow">
+    <motion.main
+      initial={pageTransiton.initial}
+      animate={pageTransiton.animate}
+      transition={pageTransiton.transition}
+      className="Crew grid-container flow"
+    >
       <h1 className="numbered-title">
         <span aria-hidden="true">02</span>Meet your crew
       </h1>
 
-      <picture className="Crew__image">
+      <motion.picture
+        initial={imageTransition.initial}
+        animate={imageTransition.animate}
+        transition={imageTransition.transition}
+        key={`${activeCrew.current.role.split(" ").join("-")}-image`}
+        className="Crew__image"
+      >
         <source srcSet={activeCrew.current.images.webp} type="image/webp" />
         <img src={activeCrew.current.images.png} alt="douglas hurley" />
-      </picture>
+      </motion.picture>
 
-      <article
+      <motion.article
+        initial={descriptionTransition.initial}
+        animate={descriptionTransition.animate}
+        transition={descriptionTransition.transition}
+        key={`${activeCrew.current.role.split(" ").join("-")}-tab`}
         className="Crew__info flow"
         id={`${activeCrew.current.role.split(" ").join("-")}-tab`}
         tabIndex="0"
@@ -70,7 +91,7 @@ export default function Crew() {
         </header>
 
         <p>{activeCrew.current.bio}</p>
-      </article>
+      </motion.article>
 
       <CrewContext.Provider value={{ activeTabIndex, setActiveTab }}>
         <SliderControls label={"crew list"} context={CrewContext}>
@@ -83,6 +104,6 @@ export default function Crew() {
           ))}
         </SliderControls>
       </CrewContext.Provider>
-    </main>
+    </motion.main>
   );
 }

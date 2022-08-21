@@ -2,6 +2,12 @@ import React, { createContext, useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SliderControls, SliderTab } from "../../components";
 import data from "../../data.json";
+import { motion } from "framer-motion";
+import {
+  pageTransiton,
+  imageTransition,
+  descriptionTransition,
+} from "../transitions";
 
 import "./Technology.css";
 
@@ -44,7 +50,12 @@ export default function Technology() {
   }
 
   return (
-    <main className="Technology grid-container flow">
+    <motion.main
+      initial={pageTransiton.initial}
+      animate={pageTransiton.animate}
+      transition={pageTransiton.transition}
+      className="Technology grid-container flow"
+    >
       <h1 className="numbered-title">
         <span aria-hidden="true">03</span>Space launch 101
       </h1>
@@ -61,7 +72,13 @@ export default function Technology() {
         </SliderControls>
       </TechnologyContext.Provider>
 
-      <picture className="Technology__image">
+      <motion.picture
+        initial={imageTransition.initial}
+        animate={imageTransition.animate}
+        transition={imageTransition.transition}
+        key={`${activeTechnology.current.name.split(" ").join("-")}-image`}
+        className="Technology__image"
+      >
         <source
           media="(min-width: 53.75em)"
           srcSet={activeTechnology.current.images.portrait}
@@ -71,23 +88,27 @@ export default function Technology() {
           src={activeTechnology.current.images.landscape}
           alt="the launch vehicle"
         />
-      </picture>
+      </motion.picture>
 
-      <article
+      <motion.article
+        initial={descriptionTransition.initial}
+        animate={descriptionTransition.animate}
+        transition={descriptionTransition.transition}
         className="Technology__info flow"
         id={`${activeTechnology.current.name.split(" ").join("-")}-tab`}
+        key={`${activeTechnology.current.name.split(" ").join("-")}-tab`}
         tabIndex="0"
         role="tabpanel"
       >
-        <header class="flow">
-          <h2 class="uppercase fs-600 ff-serif">The terminology...</h2>
-          <p class="uppercase fs-700 text-white ff-serif">
+        <header className="flow">
+          <h2 className="uppercase fs-600 ff-serif">The terminology...</h2>
+          <p className="uppercase fs-700 text-white ff-serif">
             {activeTechnology.current.name}
           </p>
         </header>
 
         <p>{activeTechnology.current.description}</p>
-      </article>
-    </main>
+      </motion.article>
+    </motion.main>
   );
 }

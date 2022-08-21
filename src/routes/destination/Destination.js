@@ -2,6 +2,12 @@ import React, { createContext, useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SliderControls, SliderTab } from "../../components";
 import data from "../../data.json";
+import { motion } from "framer-motion";
+import {
+  pageTransiton,
+  imageTransition,
+  descriptionTransition,
+} from "../transitions";
 
 import "./Destination.css";
 
@@ -44,12 +50,23 @@ export default function Destination() {
   }
 
   return (
-    <main className="Destination grid-container flow">
+    <motion.main
+      initial={pageTransiton.initial}
+      animate={pageTransiton.animate}
+      transition={pageTransiton.transition}
+      className="Destination grid-container flow"
+    >
       <h1 className="numbered-title">
         <span aria-hidden="true">01</span>Pick your destination
       </h1>
 
-      <picture className="Destination__image">
+      <motion.picture
+        initial={imageTransition.initial}
+        animate={imageTransition.animate}
+        transition={imageTransition.transition}
+        key={`${activeDestination.current.name}-image`}
+        className="Destination__image"
+      >
         <source
           srcSet={activeDestination.current.images.webp}
           type="image/webp"
@@ -58,7 +75,7 @@ export default function Destination() {
           src={activeDestination.current.images.png}
           alt={`the ${activeDestination.current.name}}`}
         />
-      </picture>
+      </motion.picture>
 
       <DestinationContext.Provider value={{ activeTabIndex, setActiveTab }}>
         <SliderControls context={DestinationContext}>
@@ -68,7 +85,11 @@ export default function Destination() {
         </SliderControls>
       </DestinationContext.Provider>
 
-      <article
+      <motion.article
+        initial={descriptionTransition.initial}
+        animate={descriptionTransition.animate}
+        transition={descriptionTransition.transition}
+        key={`${activeDestination.current.name}-tab`}
         className="Destination__info flow"
         id={`${activeDestination.current.name}-tab`}
         tabIndex="0"
@@ -100,7 +121,7 @@ export default function Destination() {
             </p>
           </div>
         </section>
-      </article>
-    </main>
+      </motion.article>
+    </motion.main>
   );
 }
